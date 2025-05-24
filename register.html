@@ -14,7 +14,6 @@
             --sock-gradient: linear-gradient(135deg, #a21caf 0%, #9333ea 60%, #18122b 100%);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--sock-gradient);
@@ -261,7 +260,6 @@
         </div>
     </div>
     <script>
-        // Регистрация пользователя (логика как на основном сайте)
         document.getElementById('registerForm').onsubmit = function(e) {
             e.preventDefault();
             const username = document.getElementById('username').value.trim();
@@ -275,7 +273,6 @@
             }
             users.push({ username, password });
             localStorage.setItem('users', JSON.stringify(users));
-            // Начальный баланс носков
             let socksData = JSON.parse(localStorage.getItem('socksData')) || {};
             socksData[username] = 100;
             localStorage.setItem('socksData', JSON.stringify(socksData));
