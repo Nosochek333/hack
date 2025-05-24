@@ -19,7 +19,6 @@
             --glass-bg: rgba(60, 19, 80, 0.6);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--sock-gradient);
@@ -377,11 +376,21 @@
         }
         initData();
 
+        // Загрузка текста карточек при обновлении
+        function loadCardTexts() {
+            let texts = JSON.parse(localStorage.getItem('pageTexts') || '{}');
+            Object.keys(texts).forEach(key => {
+                if(document.getElementById(key)) {
+                    document.getElementById(key).textContent = texts[key];
+                }
+            });
+        }
+        loadCardTexts();
+
         // Проверка авторизации и прав
         function checkAuth() {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             const isAdmin = currentUser && currentUser.username === 'Nos';
-            // Кнопки в шапке
             if(currentUser) {
                 document.getElementById('auth-buttons').innerHTML = `
                     <div class="balance">
@@ -389,9 +398,7 @@
                     </div>
                     <button class="btn btn-accent" onclick="logout()">Выйти</button>
                 `;
-                // Админ-панель видна только админу
                 document.getElementById('admin-panel').style.display = isAdmin ? 'flex' : 'none';
-                // Кнопки редактирования текста только для админа
                 document.querySelectorAll('.creature-info').forEach((el, index) => {
                     let oldEdit = el.querySelector('.btn-edit');
                     if (oldEdit) oldEdit.remove();
@@ -418,7 +425,6 @@
             const socksData = JSON.parse(localStorage.getItem('socksData'));
             socksData[username] = (socksData[username] || 0) + amount;
             localStorage.setItem('socksData', JSON.stringify(socksData));
-            // Обновляем отображение
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             if(currentUser && currentUser.username === username) {
                 document.getElementById('user-socks').textContent = socksData[username];
@@ -444,7 +450,6 @@
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             const currentSocks = getUserSocks(currentUser.username);
             if(amount > currentSocks) return alert('Недостаточно носков!');
-            // Проверяем существование пользователя
             const users = JSON.parse(localStorage.getItem('users'));
             if(!users.some(u => u.username === recipient)) {
                 return alert('Пользователь не найден!');
@@ -465,7 +470,6 @@
             const newText = prompt('Редактировать текст:', text);
             if(newText !== null) {
                 document.getElementById(`text-${id}`).textContent = newText;
-                // Сохраняем изменения
                 let texts = JSON.parse(localStorage.getItem('pageTexts') || '{}');
                 texts[`text-${id}`] = newText;
                 localStorage.setItem('pageTexts', JSON.stringify(texts));
