@@ -29,7 +29,6 @@
             color: var(--light);
             min-height: 100vh;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .container {
@@ -44,8 +43,6 @@
             align-items: center;
             padding: 20px 0;
             border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            z-index: 10;
         }
 
         .logo {
@@ -55,7 +52,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .auth-buttons {
@@ -69,15 +65,12 @@
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             border: none;
             font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .btn-primary {
@@ -88,7 +81,6 @@
         .btn-primary:hover {
             background: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .btn-accent {
@@ -96,27 +88,11 @@
             color: white;
         }
 
-        .btn-accent:hover {
-            background: #3a7bd5;
-            transform: translateY(-2px);
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #3ab0d5;
-            transform: translateY(-2px);
-        }
-
         .balance {
             background: rgba(255, 255, 255, 0.1);
             padding: 8px 15px;
             border-radius: 50px;
             font-weight: 600;
-            backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
             gap: 5px;
@@ -131,12 +107,10 @@
             margin: 40px 0;
             font-size: 48px;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             background: linear-gradient(to right, #f72585, #4361ee);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .creatures {
@@ -150,26 +124,18 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             backdrop-filter: blur(5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            position: relative;
         }
 
         .creature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .creature-img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .creature-card:hover .creature-img {
-            transform: scale(1.05);
         }
 
         .creature-info {
@@ -180,20 +146,11 @@
             margin-top: 0;
             font-size: 22px;
             color: white;
-            margin-bottom: 10px;
-        }
-
-        .creature-info p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 15px;
         }
 
         .edit-form {
             display: none;
             margin-top: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 10px;
         }
 
         .edit-form textarea {
@@ -205,7 +162,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.1);
             color: white;
-            font-family: inherit;
         }
 
         .admin-panel {
@@ -226,9 +182,9 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
             z-index: 1000;
+            display: flex;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(5px);
         }
 
         .modal-content {
@@ -237,48 +193,19 @@
             border-radius: 15px;
             width: 90%;
             max-width: 500px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            animation: modalFadeIn 0.4s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal h3 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: white;
-            text-align: center;
         }
 
         .form-group {
             margin-bottom: 20px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .form-group input, .form-group select {
+        .form-group input {
             width: 100%;
             padding: 12px 15px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.1);
             color: white;
-            font-family: inherit;
-            font-size: 16px;
-        }
-
-        .form-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-top: 25px;
         }
 
         footer {
@@ -286,54 +213,6 @@
             margin-top: 50px;
             padding: 30px 0;
             border-top: 2px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-        }
-
-        /* Анимации */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* Эффекты для кнопок */
-        .btn-pulse {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-pulse:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
-
-        .btn-pulse:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
-            }
         }
     </style>
 </head>
@@ -347,18 +226,14 @@
             </div>
         </header>
 
-        <h1 class="floating">Удивительные существа океана</h1>
+        <h1>Удивительные существа океана</h1>
         
         <div class="creatures">
             <div class="creature-card">
                 <img src="https://images.unsplash.com/photo-1534766555767-14d01a4d0b92" alt="Медуза" class="creature-img">
                 <div class="creature-info">
                     <h3>Медуза Атолла</h3>
-                    <p id="text-1">Эта глубоководная медуза использует биолюминесценцию для привлечения добычи. Когда ее атакуют, она испускает яркую вспышку света, чтобы привлечь более крупных хищников к своему обидчику.</p>
-                    <div class="edit-form" id="edit-form-1">
-                        <textarea id="edit-area-1"></textarea>
-                        <button class="btn btn-success" onclick="saveText(1)">Сохранить</button>
-                    </div>
+                    <p id="text-1">Эта глубоководная медуза использует биолюминесценцию для привлечения добычи.</p>
                 </div>
             </div>
             
@@ -366,273 +241,181 @@
                 <img src="https://images.unsplash.com/photo-1582731594633-9a1aac9a0c0a" alt="Осьминог" class="creature-img">
                 <div class="creature-info">
                     <h3>Мимический осьминог</h3>
-                    <p id="text-2">Этот удивительный осьминог может имитировать внешний вид и поведение более чем 15 морских видов, включая морских змей, скатов и камбал.</p>
-                    <div class="edit-form" id="edit-form-2">
-                        <textarea id="edit-area-2"></textarea>
-                        <button class="btn btn-success" onclick="saveText(2)">Сохранить</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="creature-card">
-                <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b" alt="Рыба-капля" class="creature-img">
-                <div class="creature-info">
-                    <h3>Рыба-капля</h3>
-                    <p id="text-3">Обитающая на больших глубинах, эта рыба имеет желеобразную структуру тела, которая помогает ей выдерживать огромное давление. Ее печальное выражение "лица" сделало ее интернет-знаменитостью.</p>
-                    <div class="edit-form" id="edit-form-3">
-                        <textarea id="edit-area-3"></textarea>
-                        <button class="btn btn-success" onclick="saveText(3)">Сохранить</button>
-                    </div>
+                    <p id="text-2">Этот удивительный осьминог может имитировать внешний вид и поведение более чем 15 морских видов.</p>
                 </div>
             </div>
         </div>
 
         <footer>
-            <p>© 2023 Ocean Wonders. Все права не защищены.</p>
+            <p>© 2023 Ocean Wonders</p>
         </footer>
     </div>
 
-    <!-- Модальное окно для фарма валюты -->
+    <!-- Модальные окна -->
     <div class="modal" id="farm-modal">
         <div class="modal-content">
             <h3>Фарм носков</h3>
             <div class="form-group">
-                <label for="farm-amount">Сколько носков вы хотите нафармить?</label>
-                <input type="number" id="farm-amount" placeholder="Введите количество" min="1">
+                <input type="number" id="farm-amount" placeholder="Количество носков">
             </div>
-            <div class="form-actions">
-                <button class="btn btn-primary btn-pulse" onclick="farmSocks()">Нафармить</button>
-                <button class="btn btn-accent" onclick="closeModal('farm-modal')">Отмена</button>
-            </div>
+            <button class="btn btn-primary" onclick="farmSocks()">Нафармить</button>
         </div>
     </div>
 
-    <!-- Модальное окно для перевода валюты -->
     <div class="modal" id="transfer-modal">
         <div class="modal-content">
             <h3>Перевод носков</h3>
             <div class="form-group">
-                <label for="recipient">Получатель:</label>
                 <input type="text" id="recipient" placeholder="Имя пользователя">
             </div>
             <div class="form-group">
-                <label for="transfer-amount">Количество носков:</label>
-                <input type="number" id="transfer-amount" placeholder="Введите количество" min="1">
+                <input type="number" id="transfer-amount" placeholder="Количество носков">
             </div>
-            <div class="form-actions">
-                <button class="btn btn-primary btn-pulse" onclick="transferSocks()">Перевести</button>
-                <button class="btn btn-accent" onclick="closeModal('transfer-modal')">Отмена</button>
-            </div>
+            <button class="btn btn-primary" onclick="transferSocks()">Перевести</button>
         </div>
     </div>
 
-    <!-- Админ-панель (появляется только для админа) -->
-    <div class="admin-panel" id="admin-panel" style="display: none;">
-        <button class="btn btn-success btn-pulse" onclick="openModal('farm-modal')">
-            <i>🧦</i> Фарм
-        </button>
-        <button class="btn btn-accent btn-pulse" onclick="openModal('transfer-modal')">
-            <i>💸</i> Перевести
-        </button>
+    <!-- Админ-панель -->
+    <div class="admin-panel" id="admin-panel">
+        <button class="btn btn-accent" onclick="openModal('farm-modal')">Фарм</button>
+        <button class="btn btn-accent" onclick="openModal('transfer-modal')">Перевести</button>
     </div>
 
     <script>
-
-         <script>
-        // Простое "шифрование" ROT13 (уязвимость: слабое шифрование)
-        function simpleEncrypt(text) {
-            return text.split('').map(c => {
-                const code = c.charCodeAt(0);
-                if (code >= 65 && code <= 90) {
-                    return String.fromCharCode(((code - 65 + 13) % 26) + 65);
-                } else if (code >= 97 && code <= 122) {
-                    return String.fromCharCode(((code - 97 + 13) % 26) + 97);
-                }
-                return c;
-            }).join('');
-        }
-
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorEl = document.getElementById('error-message');
-            
-            if(!username || !password) {
-                showError('Заполните все поля');
-                return;
-            }
-            
-            // Получаем сохраненных пользователей
-            const users = JSON.parse(localStorage.getItem('users') || []);
-            
-            // Проверяем наличие пользователя (уязвимость: нет защиты от брутфорса)
-            const user = users.find(u => 
-                u.username === username && 
-                u.password === simpleEncrypt(password)
-            );
-            
-            if(user) {
-                // Сохраняем текущего пользователя (уязвимость: данные в localStorage)
-                localStorage.setItem('currentUser', JSON.stringify({
-                    username: username,
-                    password: simpleEncrypt(password) // "Шифруем" пароль
-                }));
-                
-                // Перенаправляем на главную страницу
-                window.location.href = 'index.html';
-            } else {
-                showError('Неверное имя пользователя или пароль');
-            }
-        }
-        
-        function showError(message) {
-            const errorEl = document.getElementById('error-message');
-            errorEl.textContent = message;
-            errorEl.style.display = 'block';
-        }
-        
-        // Уязвимость: можно войти как админ без пароля через консоль
-        console.log('Для тестирования: \nloginAsAdmin() - войти как админ без пароля');
-        window.loginAsAdmin = function() {
-            localStorage.setItem('currentUser', JSON.stringify({
-                username: 'Nos',
-                password: '123qwe'
-            }));
-            window.location.href = 'index.html';
-        };
-    </script>
         // Инициализация данных
-        if(!localStorage.getItem('users')) {
-            localStorage.setItem('users', JSON.stringify([
-                { username: 'Nos', password: '123qwe', socks: 1000 }
-            ]));
-        }
-
-        if(!localStorage.getItem('socksData')) {
-            localStorage.setItem('socksData', JSON.stringify({}));
-        }
-
-        // Проверяем, есть ли сохраненные данные в localStorage
-        if(localStorage.getItem('currentUser')) {
-            const user = JSON.parse(localStorage.getItem('currentUser'));
-            document.getElementById('auth-buttons').innerHTML = `
-                <div class="balance">
-                    Носки: <span id="user-socks">${getUserSocks(user.username) || 0}</span>
-                </div>
-                <button class="btn btn-accent" onclick="logout()">Выйти</button>
-            `;
-
-            // Если это админ, показываем кнопки редактирования и админ-панель
-            if(user.username === 'Nos') {
-                document.querySelectorAll('.creature-info').forEach((el, index) => {
-                    const editButton = document.createElement('button');
-                    editButton.className = 'btn btn-success btn-pulse';
-                    editButton.innerHTML = '<i>✏️</i> Редактировать';
-                    editButton.onclick = () => showEditForm(index + 1);
-                    el.appendChild(editButton);
-                });
-                document.getElementById('admin-panel').style.display = 'flex';
+        function initData() {
+            if(!localStorage.getItem('users')) {
+                localStorage.setItem('users', JSON.stringify([
+                    { username: 'Nos', password: 'djr123' } // Пароль: 123qwe (зашифрованный ROT13)
+                ]));
+            }
+            
+            if(!localStorage.getItem('socksData')) {
+                localStorage.setItem('socksData', JSON.stringify({
+                    'Nos': 1000
+                }));
             }
         }
+        
+        initData();
 
-        // Загружаем сохраненные тексты
-        const savedTexts = JSON.parse(localStorage.getItem('pageTexts') || '{}');
-        for(const [id, text] of Object.entries(savedTexts)) {
-            const element = document.getElementById(id);
-            if(element) element.innerText = text;
-        }
-
-        // Функции для работы с модальными окнами
-        function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-
-        // Функции для работы с текстом
-        function showEditForm(id) {
-            const text = document.getElementById(`text-${id}`).innerText;
-            document.getElementById(`edit-area-${id}`).value = text;
-            document.getElementById(`edit-form-${id}`).style.display = 'block';
-        }
-
-        function saveText(id) {
-            const newText = document.getElementById(`edit-area-${id}`).value;
-            document.getElementById(`text-${id}`).innerText = newText;
-            document.getElementById(`edit-form-${id}`).style.display = 'none';
+        // Проверка авторизации
+        function checkAuth() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             
-            // Сохраняем изменения в localStorage
-            let texts = JSON.parse(localStorage.getItem('pageTexts') || '{}');
-            texts[`text-${id}`] = newText;
-            localStorage.setItem('pageTexts', JSON.stringify(texts));
+            if(currentUser) {
+                document.getElementById('auth-buttons').innerHTML = `
+                    <div class="balance">
+                        Носки: <span id="user-socks">${getUserSocks(currentUser.username)}</span>
+                    </div>
+                    <button class="btn btn-accent" onclick="logout()">Выйти</button>
+                `;
+                
+                if(currentUser.username === 'Nos') {
+                    document.getElementById('admin-panel').style.display = 'flex';
+                    
+                    // Добавляем кнопки редактирования
+                    document.querySelectorAll('.creature-info').forEach((el, index) => {
+                        const editBtn = document.createElement('button');
+                        editBtn.className = 'btn btn-primary';
+                        editBtn.textContent = 'Редактировать';
+                        editBtn.onclick = () => editText(index + 1);
+                        el.appendChild(editBtn);
+                    });
+                }
+            }
         }
+        
+        checkAuth();
 
         // Функции для работы с валютой
         function getUserSocks(username) {
             const socksData = JSON.parse(localStorage.getItem('socksData'));
             return socksData[username] || 0;
         }
-
-        function updateUserSocks(username, amount) {
+        
+        function updateSocks(username, amount) {
             const socksData = JSON.parse(localStorage.getItem('socksData'));
             socksData[username] = (socksData[username] || 0) + amount;
             localStorage.setItem('socksData', JSON.stringify(socksData));
             
-            // Обновляем отображение баланса, если пользователь залогинен
-            const currentUser = JSON.parse(localStorage.getItem('currentUser') || {});
-            if(currentUser.username === username) {
+            // Обновляем отображение
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if(currentUser && currentUser.username === username) {
                 document.getElementById('user-socks').textContent = socksData[username];
             }
         }
-
+        
         function farmSocks() {
             const amount = parseInt(document.getElementById('farm-amount').value);
-            if(isNaN(amount) return alert('Введите корректное число!');
+            if(isNaN(amount)) return alert('Введите число!');
             
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            updateUserSocks(currentUser.username, amount);
+            updateSocks(currentUser.username, amount);
+            alert(`Вы получили ${amount} носков!`);
             closeModal('farm-modal');
-            alert(`Вы успешно нафармили ${amount} носков!`);
         }
-
+        
         function transferSocks() {
-            const recipient = document.getElementById('recipient').value.trim();
+            const recipient = document.getElementById('recipient').value;
             const amount = parseInt(document.getElementById('transfer-amount').value);
             
-            if(!recipient) return alert('Введите имя получателя!');
-            if(isNaN(amount)) return alert('Введите корректное число!');
+            if(!recipient || isNaN(amount)) return alert('Заполните все поля!');
             
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            const currentSocks = getUserSocks(currentUser.username) || 0;
+            const currentSocks = getUserSocks(currentUser.username);
             
-            if(amount > currentSocks) return alert('Недостаточно носков для перевода!');
+            if(amount > currentSocks) return alert('Недостаточно носков!');
             
-            // Проверяем существование получателя
+            // Проверяем существование пользователя
             const users = JSON.parse(localStorage.getItem('users'));
             if(!users.some(u => u.username === recipient)) {
-                return alert('Пользователь с таким именем не найден!');
+                return alert('Пользователь не найден!');
             }
             
-            // Выполняем перевод
-            updateUserSocks(currentUser.username, -amount);
-            updateUserSocks(recipient, amount);
+            updateSocks(currentUser.username, -amount);
+            updateSocks(recipient, amount);
             
+            alert(`Вы перевели ${amount} носков пользователю ${recipient}`);
             closeModal('transfer-modal');
-            alert(`Вы успешно перевели ${amount} носков пользователю ${recipient}!`);
         }
-
+        
+        // Редактирование текста
+        function editText(id) {
+            const text = document.getElementById(`text-${id}`).textContent;
+            const newText = prompt('Редактировать текст:', text);
+            
+            if(newText !== null) {
+                document.getElementById(`text-${id}`).textContent = newText;
+                
+                // Сохраняем изменения
+                let texts = JSON.parse(localStorage.getItem('pageTexts') || {});
+                texts[`text-${id}`] = newText;
+                localStorage.setItem('pageTexts', JSON.stringify(texts));
+            }
+        }
+        
+        // Работа с модальными окнами
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+        
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        
+        // Выход
         function logout() {
             localStorage.removeItem('currentUser');
             location.reload();
         }
-
-        // Уязвимость: можно вызвать из консоли
-        window.hackSocks = function(username, amount) {
-            updateUserSocks(username, amount);
-            alert(`${amount} носков добавлено пользователю ${username}`);
-        };
+        
+        // Утилиты
+        window.onclick = function(event) {
+            if(event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
