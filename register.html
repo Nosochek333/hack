@@ -175,6 +175,29 @@
             transform: scale(1.035) translateY(-2px);
             box-shadow: 0 4px 22px #9333ea33;
         }
+        .btn-login-link {
+            width: 100%;
+            margin-top: 10px;
+            background: linear-gradient(90deg, #f72585 0%, #9333ea 100%);
+            color: #fff;
+            border: none;
+            border-radius: 40px;
+            padding: 14px 0;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 2px 18px #9333ea22;
+            transition: background 0.17s, transform 0.17s, box-shadow 0.17s;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn-login-link:hover, .btn-login-link:focus {
+            background: linear-gradient(90deg, #9333ea 0%, #f72585 100%);
+            transform: scale(1.035) translateY(-2px);
+            box-shadow: 0 4px 22px #f7258533;
+        }
         .login-link {
             text-align: center;
             margin-top: 22px;
@@ -232,6 +255,7 @@
             </div>
             <button type="submit" class="btn">Зарегистрироваться</button>
         </form>
+        <a href="login.html" class="btn-login-link">Войти</a>
         <div class="login-link">Уже есть аккаунт?
             <a href="login.html">Войти</a>
         </div>
