@@ -6,6 +6,7 @@
     <title>Socks Wonders</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
     <style>
+        /* ВСТАВЬ СЮДА СВОИ СТИЛИ ИЗ ПРЕДЫДУЩИХ ВЕРСИЙ */
         :root {
             --primary: #9333ea;
             --secondary: #6d28d9;
@@ -361,22 +362,45 @@
         <button class="btn btn-accent" onclick="openModal('transfer-modal')">Перевести</button>
     </div>
     <script>
-        // Инициализация данных
+        // === ФУНКЦИИ ДЛЯ ГИБКОЙ НАСТРОЙКИ АДМИНА ===
+        function getAdminNick() {
+            // Меняй значение ниже для смены ника админа!
+            return window.ADMIN_NICK || "Nos";
+        }
+        function setAdminNick(newNick) {
+            window.ADMIN_NICK = newNick;
+        }
+        function getAdminPass() {
+            // Меняй значение ниже для смены пароля админа!
+            return window.ADMIN_PASS || "123qwe";
+        }
+        function setAdminPass(newPass) {
+            window.ADMIN_PASS = newPass;
+        }
+
+        // Пример автопереназначения:
+        // setAdminNick("Nosochek333"); setAdminPass("superpass123");
+        // Раскомментируй строку ниже и поменяй значения под себя!
+        // setAdminNick("Nosochek333"); setAdminPass("superpass123");
+
+        // === Инициализация данных ===
         function initData() {
-            if(!localStorage.getItem('users')) {
-                localStorage.setItem('users', JSON.stringify([
-                    { username: 'Nos', password: '123qwe' }
-                ]));
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            // Проверяем, есть ли такой админ, и если нет — добавляем
+            let adminIdx = users.findIndex(u => u.username === getAdminNick());
+            if (adminIdx === -1) {
+                users.push({ username: getAdminNick(), password: getAdminPass() });
+                localStorage.setItem('users', JSON.stringify(users));
             }
             if(!localStorage.getItem('socksData')) {
-                localStorage.setItem('socksData', JSON.stringify({
-                    'Nos': 1000
-                }));
+                let socks = {};
+                socks[getAdminNick()] = 1000;
+                localStorage.setItem('socksData', JSON.stringify(socks));
             }
         }
         initData();
 
-        // Загрузка текста карточек при обновлении
+        // Загрузка текстов карточек из localStorage (если админ менял)
         function loadCardTexts() {
             let texts = JSON.parse(localStorage.getItem('pageTexts') || '{}');
             Object.keys(texts).forEach(key => {
@@ -387,10 +411,9 @@
         }
         loadCardTexts();
 
-        // Проверка авторизации и прав
         function checkAuth() {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            const isAdmin = currentUser && currentUser.username === 'Nos';
+            const isAdmin = currentUser && currentUser.username === getAdminNick();
             if(currentUser) {
                 document.getElementById('auth-buttons').innerHTML = `
                     <div class="balance">
@@ -416,7 +439,6 @@
         }
         checkAuth();
 
-        // Функции для работы с валютой
         function getUserSocks(username) {
             const socksData = JSON.parse(localStorage.getItem('socksData'));
             return socksData[username] || 0;
@@ -432,7 +454,7 @@
         }
         function farmSocks() {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            if (!currentUser || currentUser.username !== 'Nos') {
+            if (!currentUser || currentUser.username !== getAdminNick()) {
                 alert('Фармить может только админ!');
                 closeModal('farm-modal');
                 return;
@@ -459,10 +481,9 @@
             alert(`Вы перевели ${amount} носков пользователю ${recipient}`);
             closeModal('transfer-modal');
         }
-        // Редактирование текста только для админа
         function editText(id) {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            if (!currentUser || currentUser.username !== 'Nos') {
+            if (!currentUser || currentUser.username !== getAdminNick()) {
                 alert('Редактировать текст может только админ!');
                 return;
             }
@@ -475,24 +496,24 @@
                 localStorage.setItem('pageTexts', JSON.stringify(texts));
             }
         }
-        // Работа с модальными окнами
         function openModal(id) {
             document.getElementById(id).style.display = 'flex';
         }
         function closeModal(id) {
             document.getElementById(id).style.display = 'none';
         }
-        // Выход
         function logout() {
             localStorage.removeItem('currentUser');
             location.reload();
         }
-        // Утилиты
         window.onclick = function(event) {
             if(event.target.className === 'modal') {
                 event.target.style.display = 'none';
             }
         }
+        // --- КАК МЕНЯТЬ НИК ИЛИ ПАРОЛЬ АДМИНА ---
+        // Просто вызови setAdminNick("ТВОЙ_НИК") и setAdminPass("ТВОЙ_ПАРОЛЬ") в коде или в консоли,
+        // или раскомментируй строку выше для автоприсваивания. После этого перезагрузи страницу.
     </script>
 </body>
 </html>
