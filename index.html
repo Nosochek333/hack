@@ -3,254 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Удивительные существа океана</title>
+    <title>Socks Wonders</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
-            --dark: #1b263b;
-            --light: #f8f9fa;
-            --success: #4cc9f0;
-            --danger: #f72585;
-            --warning: #f8961e;
+            --primary: #9333ea;
+            --secondary: #6d28d9;
+            --accent: #a21caf;
+            --dark: #18122b;
+            --light: #ece9f7;
+            --card: rgba(41, 19, 74, 0.8);
+            --sock-yellow: #f8e16c;
+            --sock-pink: #f72585;
+            --sock-gradient: linear-gradient(135deg, #a21caf 0%, #9333ea 50%, #18122b 100%);
+            --glass-bg: rgba(60, 19, 80, 0.6);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background: var(--sock-gradient);
             color: var(--light);
             min-height: 100vh;
             line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
         }
-
+        /* Волнистый фон */
+        body::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            top: -80px;
+            left: -120px;
+            width: 130vw;
+            height: 400px;
+            background: radial-gradient(ellipse at center, #a21caf 0%, #18122b 100%);
+            opacity: 0.4;
+            filter: blur(30px);
+            pointer-events: none;
+        }
+        body::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            bottom: -120px;
+            right: -100px;
+            width: 120vw;
+            height: 320px;
+            background: linear-gradient(135deg, #9333ea 35%, #11101d 100%);
+            opacity: 0.35;
+            filter: blur(40px);
+            pointer-events: none;
+        }
         .container {
+            position: relative;
+            z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px;
         }
-
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 32px 0 18px 0;
+            border-bottom: 2.5px solid rgba(255, 255, 255, 0.09);
         }
-
         .logo {
             font-family: 'Pacifico', cursive;
-            font-size: 32px;
-            background: linear-gradient(to right, #f72585, #4361ee);
+            font-size: 38px;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #f72585, #9333ea 65%, #f8e16c 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 2px 18px #9333ea44;
+            display: flex;
+            align-items: center;
+            gap: 13px;
         }
-
+        .logo::before {
+            content: "";
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            background: url('https://cdn-icons-png.flaticon.com/512/2454/2454304.png') no-repeat center/contain;
+            filter: drop-shadow(0 0 8px #a21caf66);
+        }
         .auth-buttons {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 18px;
         }
-
         .btn {
-            padding: 10px 20px;
-            border-radius: 50px;
+            padding: 12px 26px;
+            border-radius: 40px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.17s cubic-bezier(.4,2,.6,1);
             border: none;
-            font-size: 14px;
+            font-size: 16px;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
+            background: var(--glass-bg);
+            color: var(--light);
+            box-shadow: 0 2px 14px #a21caf22;
+            position: relative;
+            overflow: hidden;
         }
-
         .btn-primary {
-            background: var(--primary);
-            color: white;
+            background: linear-gradient(90deg, #9333ea 0%, #a21caf 100%);
+            color: #fff;
         }
-
         .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
+            background: linear-gradient(90deg, #a21caf 0%, #9333ea 100%);
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 4px 22px #9333ea33;
         }
-
         .btn-accent {
-            background: var(--accent);
-            color: white;
+            background: linear-gradient(90deg, #f72585 0%, #a21caf 100%);
+            color: #fff;
         }
-
+        .btn-accent:hover {
+            background: linear-gradient(90deg, #a21caf 0%, #f72585 100%);
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 4px 22px #f7258533;
+        }
         .balance {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 15px;
-            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.11);
+            padding: 10px 19px;
+            border-radius: 40px;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            font-size: 16px;
+            box-shadow: 0 2px 10px #9333ea22;
         }
-
         .balance span {
-            color: #4cc9f0;
+            color: #f8e16c;
+            font-weight: bold;
+            text-shadow: 0 1px 6px #f7258544;
         }
-
         h1 {
             text-align: center;
-            margin: 40px 0;
-            font-size: 48px;
+            margin: 50px 0 32px 0;
+            font-size: 52px;
             font-weight: 700;
-            background: linear-gradient(to right, #f72585, #4361ee);
+            background: linear-gradient(90deg, #f72585, #9333ea 70%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 2px 16px #9333ea44;
         }
-
         .creatures {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 36px;
+            margin-top: 34px;
         }
-
         .creature-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            background: var(--card);
+            border-radius: 19px;
             overflow: hidden;
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
+            transition: all 0.25s cubic-bezier(.4,2,.6,1);
+            backdrop-filter: blur(7px);
+            box-shadow: 0 4px 28px #6d28d933, 0 1.5px 0.5px #f7258510;
+            position: relative;
         }
-
         .creature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px) scale(1.03) rotate(-1.5deg);
+            box-shadow: 0 8px 44px #9333ea55;
         }
-
         .creature-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
+            border-bottom: 2px solid #a21caf44;
+            filter: brightness(0.93) saturate(1.15);
+            transition: filter 0.3s;
         }
-
+        .creature-card:hover .creature-img {
+            filter: brightness(1.05) saturate(1.2) drop-shadow(0 0 20px #9333ea44);
+        }
         .creature-info {
-            padding: 20px;
+            padding: 28px 22px 18px 22px;
+            position: relative;
         }
-
         .creature-info h3 {
-            margin-top: 0;
-            font-size: 22px;
-            color: white;
+            font-size: 26px;
+            color: #f8e16c;
+            margin-bottom: 7px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 6px #f7258544;
         }
-
-        .edit-form {
-            display: none;
-            margin-top: 20px;
+        .creature-info p {
+            font-size: 17px;
+            color: #ece9f7;
         }
-
-        .edit-form textarea {
-            width: 100%;
-            height: 100px;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+        .creature-info .btn {
+            margin-top: 14px;
+            font-size: 14px;
+            padding: 8px 20px;
         }
-
-        .admin-panel {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            display: flex;
-            gap: 10px;
+        /* Дополнительный носочный декор на карточках */
+        .creature-card::after {
+            content: "";
+            position: absolute;
+            right: 22px;
+            bottom: 14px;
+            width: 44px;
+            height: 44px;
+            background: url('https://cdn-icons-png.flaticon.com/512/2454/2454304.png') no-repeat center/contain;
+            opacity: 0.35;
+            pointer-events: none;
         }
-
+        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
             z-index: 1000;
-            display: flex;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(24, 18, 43, 0.95);
             justify-content: center;
             align-items: center;
+            animation: modalFadeIn 0.3s;
         }
-
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         .modal-content {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
-            padding: 30px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #2d1748 60%, #9333ea 100%);
+            padding: 36px 32px 30px 32px;
+            border-radius: 19px;
             width: 90%;
-            max-width: 500px;
+            max-width: 440px;
+            box-shadow: 0 8px 40px #9333ea33;
+            color: var(--light);
+            position: relative;
         }
-
+        .modal-content h3 {
+            font-size: 24px;
+            margin-bottom: 18px;
+            color: #f8e16c;
+        }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
-
         .form-group input {
             width: 100%;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            padding: 14px 17px;
+            border-radius: 10px;
+            border: 1.5px solid #f7258530;
+            background: rgba(255,255,255,0.07);
+            color: var(--light);
+            font-size: 17px;
+            margin-top: 4px;
+            outline: none;
+            transition: border 0.2s;
         }
-
+        .form-group input:focus {
+            border: 1.5px solid #f8e16c;
+        }
+        /* Админ-панель */
+        .admin-panel {
+            position: fixed;
+            top: 32px;
+            right: 32px;
+            z-index: 2000;
+            display: flex;
+            gap: 14px;
+            background: rgba(60,19,80,0.43);
+            border-radius: 12px;
+            padding: 9px 14px;
+            box-shadow: 0 2px 18px #9333ea22;
+        }
+        .admin-panel .btn {
+            font-size: 15px;
+            padding: 8px 18px;
+        }
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding: 30px 0;
-            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            margin-top: 60px;
+            padding: 36px 0;
+            border-top: 2.5px solid rgba(255, 255, 255, 0.09);
+            font-size: 18px;
+            color: #b9aeda;
+            letter-spacing: 1.1px;
+        }
+        /* Adaptation */
+        @media(max-width: 700px) {
+            .container { padding: 10px; }
+            h1 { font-size: 36px; }
+            .creature-info { padding: 16px 8px 12px 8px; }
+            .creature-card { border-radius: 13px; }
+            .modal-content { padding: 18px 7px; }
+            .admin-panel { right: 7px; top: 7px; padding: 4px; }
+            .logo { font-size: 25px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="logo">Ocean Wonders</div>
+            <div class="logo">Socks Wonders</div>
             <div class="auth-buttons" id="auth-buttons">
                 <a href="register.html" class="btn btn-primary">Регистрация</a>
                 <a href="login.html" class="btn btn-accent">Вход</a>
             </div>
         </header>
 
-        <h1>Удивительные существа океана</h1>
+        <h1>Мир удивительных носков</h1>
         
         <div class="creatures">
             <div class="creature-card">
-                <img src="https://images.unsplash.com/photo-1534766555767-14d01a4d0b92" alt="Медуза" class="creature-img">
+                <img src="https://images.unsplash.com/photo-1534766555767-14d01a4d0b92" alt="Носочный медуза" class="creature-img">
                 <div class="creature-info">
-                    <h3>Медуза Атолла</h3>
-                    <p id="text-1">Эта глубоководная медуза использует биолюминесценцию для привлечения добычи.</p>
+                    <h3>Медуза-Носок</h3>
+                    <p id="text-1">Эта глубоководная медуза всегда в стильных фиолетовых носках. Её биолюминесценция подсвечивает самые модные узоры!</p>
                 </div>
             </div>
             
             <div class="creature-card">
-                <img src="https://images.unsplash.com/photo-1582731594633-9a1aac9a0c0a" alt="Осьминог" class="creature-img">
+                <img src="https://images.unsplash.com/photo-1582731594633-9a1aac9a0c0a" alt="Осьминог-носок" class="creature-img">
                 <div class="creature-info">
-                    <h3>Мимический осьминог</h3>
-                    <p id="text-2">Этот удивительный осьминог может имитировать внешний вид и поведение более чем 15 морских видов.</p>
+                    <h3>Осьминог-Сокс</h3>
+                    <p id="text-2">Этот удивительный осьминог может менять цвет своих носков и подбирать их к любому стилю океанского дня!</p>
                 </div>
             </div>
         </div>
-
         <footer>
-            <p>© 2023 Ocean Wonders</p>
+            <p>© 2025 Socks Wonders. Носки делают мир ярче!</p>
         </footer>
     </div>
-
     <!-- Модальные окна -->
     <div class="modal" id="farm-modal">
         <div class="modal-content">
@@ -261,7 +349,6 @@
             <button class="btn btn-primary" onclick="farmSocks()">Нафармить</button>
         </div>
     </div>
-
     <div class="modal" id="transfer-modal">
         <div class="modal-content">
             <h3>Перевод носков</h3>
@@ -274,14 +361,14 @@
             <button class="btn btn-primary" onclick="transferSocks()">Перевести</button>
         </div>
     </div>
-
     <!-- Админ-панель -->
     <div class="admin-panel" id="admin-panel">
         <button class="btn btn-accent" onclick="openModal('farm-modal')">Фарм</button>
         <button class="btn btn-accent" onclick="openModal('transfer-modal')">Перевести</button>
     </div>
-
+    <!-- Скрипты без изменений -->
     <script>
+        // ... (Весь твой JS из оригинального index.html без изменений)
         // Инициализация данных
         function initData() {
             if(!localStorage.getItem('users')) {
@@ -289,20 +376,16 @@
                     { username: 'Nos', password: 'djr123' } // Пароль: 123qwe (зашифрованный ROT13)
                 ]));
             }
-            
             if(!localStorage.getItem('socksData')) {
                 localStorage.setItem('socksData', JSON.stringify({
                     'Nos': 1000
                 }));
             }
         }
-        
         initData();
-
         // Проверка авторизации
         function checkAuth() {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            
             if(currentUser) {
                 document.getElementById('auth-buttons').innerHTML = `
                     <div class="balance">
@@ -310,10 +393,8 @@
                     </div>
                     <button class="btn btn-accent" onclick="logout()">Выйти</button>
                 `;
-                
                 if(currentUser.username === 'Nos') {
                     document.getElementById('admin-panel').style.display = 'flex';
-                    
                     // Добавляем кнопки редактирования
                     document.querySelectorAll('.creature-info').forEach((el, index) => {
                         const editBtn = document.createElement('button');
@@ -325,91 +406,71 @@
                 }
             }
         }
-        
         checkAuth();
-
         // Функции для работы с валютой
         function getUserSocks(username) {
             const socksData = JSON.parse(localStorage.getItem('socksData'));
             return socksData[username] || 0;
         }
-        
         function updateSocks(username, amount) {
             const socksData = JSON.parse(localStorage.getItem('socksData'));
             socksData[username] = (socksData[username] || 0) + amount;
             localStorage.setItem('socksData', JSON.stringify(socksData));
-            
             // Обновляем отображение
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             if(currentUser && currentUser.username === username) {
                 document.getElementById('user-socks').textContent = socksData[username];
             }
         }
-        
         function farmSocks() {
             const amount = parseInt(document.getElementById('farm-amount').value);
             if(isNaN(amount)) return alert('Введите число!');
-            
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             updateSocks(currentUser.username, amount);
             alert(`Вы получили ${amount} носков!`);
             closeModal('farm-modal');
         }
-        
         function transferSocks() {
             const recipient = document.getElementById('recipient').value;
             const amount = parseInt(document.getElementById('transfer-amount').value);
-            
             if(!recipient || isNaN(amount)) return alert('Заполните все поля!');
-            
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             const currentSocks = getUserSocks(currentUser.username);
-            
             if(amount > currentSocks) return alert('Недостаточно носков!');
-            
             // Проверяем существование пользователя
             const users = JSON.parse(localStorage.getItem('users'));
             if(!users.some(u => u.username === recipient)) {
                 return alert('Пользователь не найден!');
             }
-            
             updateSocks(currentUser.username, -amount);
             updateSocks(recipient, amount);
-            
             alert(`Вы перевели ${amount} носков пользователю ${recipient}`);
             closeModal('transfer-modal');
         }
-        
         // Редактирование текста
         function editText(id) {
             const text = document.getElementById(`text-${id}`).textContent;
             const newText = prompt('Редактировать текст:', text);
-            
             if(newText !== null) {
                 document.getElementById(`text-${id}`).textContent = newText;
-                
                 // Сохраняем изменения
                 let texts = JSON.parse(localStorage.getItem('pageTexts') || {});
                 texts[`text-${id}`] = newText;
                 localStorage.setItem('pageTexts', JSON.stringify(texts));
             }
         }
-        
         // Работа с модальными окнами
         function openModal(id) {
             document.getElementById(id).style.display = 'flex';
         }
-        
         function closeModal(id) {
             document.getElementById(id).style.display = 'none';
         }
-        
         // Выход
         function logout() {
             localStorage.removeItem('currentUser');
             location.reload();
         }
-        
         // Утилиты
         window.onclick = function(event) {
             if(event.target.className === 'modal') {
